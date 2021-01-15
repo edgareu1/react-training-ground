@@ -1,4 +1,7 @@
 import './App.css';
+import FilterButton from "./components/FilterButton";
+import Form from "./components/Form";
+import Todo from "./components/Todo";
 
 function App() {
   return (
