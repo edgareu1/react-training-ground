@@ -18,6 +18,9 @@ function App(props) {
     )
   );
 
+  const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
+  const headingText = `${taskList.length} ${tasksNoun} remaining`;
+
   function addTask(name) {
     const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
     setTasks([...tasks, newTask]);
@@ -32,9 +35,7 @@ function App(props) {
         <FilterButton pressed={false} type="Active" />
         <FilterButton pressed={false} type="Completed" />
       </div>
-      <h2 id="list-heading">
-        3 tasks remaining
-      </h2>
+      <h2 id="list-heading">{headingText}</h2>
       <ul
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading"
