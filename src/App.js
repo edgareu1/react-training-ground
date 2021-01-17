@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
+import { usePrevious } from "./components/use-previous";
 import './App.css';
 import FilterButton from "./components/FilterButton";
 import Form from "./components/Form";
@@ -12,14 +13,6 @@ const FILTER_MAP = {
 };
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
-
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
 
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);

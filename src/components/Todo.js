@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { usePrevious } from "./use-previous";
 
 function Todo(props) {
   const [isEditing, setEditing] = useState(false);
@@ -18,14 +19,6 @@ function Todo(props) {
   const editFieldRef = useRef(null);
   const editButtonRef = useRef(null);
   const wasEditing = usePrevious(isEditing);
-
-  function usePrevious(value) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }
 
   const editingTemplate = (
     <form className="stack-small" onSubmit={handleSubmit}>
