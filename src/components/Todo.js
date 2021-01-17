@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function Todo(props) {
   const [isEditing, setEditing] = useState(false);
@@ -15,6 +15,9 @@ function Todo(props) {
     setEditing(false);
   }
 
+  const editFieldRef = useRef(null);
+  const editButtonRef = useRef(null);
+
   const editingTemplate = (
     <form className="stack-small" onSubmit={handleSubmit}>
       <div className="form-group">
@@ -26,6 +29,7 @@ function Todo(props) {
           className="todo-text"
           type="text"
           onChange={handleChange}
+          ref={editFieldRef}
         />
       </div>
       <div className="btn-group">
@@ -63,6 +67,7 @@ function Todo(props) {
             type="button"
             className="btn"
             onClick={() => setEditing(true)}
+            ref={editButtonRef}
           >
             Edit <span className="visually-hidden">{props.name}</span>
           </button>
@@ -76,6 +81,14 @@ function Todo(props) {
         </div>
     </div>
   );
+
+  useEffect(() => {
+    if (isEditing) {
+      editFieldRef.current.focus();
+    } else {
+      editButtonRef.current.focus();
+    }
+  }, [isEditing]);
 
   return <li className="todo">{isEditing ? editingTemplate : viewTemplate}</li>;
 }
