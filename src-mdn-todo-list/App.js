@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
-import { usePrevious } from "./components/use-previous";
+import { usePrevious } from "./utils/use-previous";
 import './App.css';
 import FilterButton from "./components/FilterButton";
 import Form from "./components/Form";
