@@ -6,7 +6,7 @@ function App(props) {
   const APP_KEY = '2e4b43adf6d0f870b97747e637895db5';
 
   const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState("meat");
+  const [search, setSearch] = useState("");
 
   function getRecipes() {
     fetch(`https://api.edamam.com/search?q=${search}&app_id=${APP_ID}&app_key=${APP_KEY}`)
@@ -26,11 +26,20 @@ function App(props) {
     });
   }
 
+  function handleChange(e) {
+    setSearch(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    getRecipes();
+  }
+
   return (
     <div>
       <h1>Recipe App</h1>
-      <form className="search-form">
-        <input type="text" className="search-bar"/>
+      <form className="search-form" onSubmit={handleSubmit}>
+        <input type="text" className="search-bar" onChange={handleChange}/>
         <button type="submit" className="search-button">
           Search
         </button>
