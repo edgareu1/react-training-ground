@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import Form from "./components/Form";
 import Recipe from "./components/Recipe";
+import "./index.css";
 
 function App(props) {
   const APP_ID = '5b82e715';
@@ -38,13 +40,13 @@ function App(props) {
   return (
     <div>
       <h1>Recipe App</h1>
-      <form className="search-form" onSubmit={handleSubmit}>
-        <input type="text" className="search-bar" onChange={handleChange}/>
-        <button type="submit" className="search-button">
-          Search
-        </button>
-      </form>
-      {recipes}
+      <Form
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+      />
+      <div className="recipes">
+        {recipes}
+      </div>
     </div>
   );
 }
