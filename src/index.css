@@ -1,0 +1,65 @@
+body {
+  background-image: linear-gradient(
+    45deg,
+    rgba(20, 200, 200, 0.5) 0%,
+    rgba(100, 150, 250, 0.5) 70%,
+    rgba(150, 200, 250, 0.5) 100%
+  );
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  margin: 32px 0 10px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 10vh;
+}
+
+.search-bar {
+  width: 50%;
+  padding: 10px;
+  border: none;
+}
+
+.search-button {
+  color: white;
+  background: rgba(40, 100, 250, 0.8);
+  padding: 10px 20px;
+  border: none;
+}
+
+.recipes {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(100, 160, 190, 0.2);
+  width: 400px;
+  padding: 15px 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(50, 50, 50, 0.5);
+  margin: 25px 15px;
+}
+
+.recipe h2 {
+  margin: 10px 0 0;
+}
+
+.recipe img {
+  height: 350px;
+  width: 350px;
+  box-shadow: 2px 2px 10px rgba(100, 100, 100, 0.5);
+  border-radius: 2px;
+}

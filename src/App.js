@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Recipe from "./components/Recipe";
+import "./index.css";
 
 function App(props) {
   const APP_ID = '5b82e715';
@@ -44,7 +45,9 @@ function App(props) {
           Search
         </button>
       </form>
-      {recipes}
+      <div className="recipes">
+        {recipes}
+      </div>
     </div>
   );
 }
