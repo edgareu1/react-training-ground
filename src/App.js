@@ -44,7 +44,9 @@ function App(props) {
           Search
         </button>
       </form>
-      {recipes}
+      <div className="recipes">
+        {recipes}
+      </div>
     </div>
   );
 }

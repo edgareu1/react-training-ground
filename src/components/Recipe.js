@@ -2,7 +2,7 @@ import React from "react";
 
 function Recipe(props) {
   return (
-    <div>
+    <div className="recipe">
       <h2>{props.title}</h2>
       <p>
         Calories: {props.calories}
