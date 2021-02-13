@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import "./index.css";
+import "./index.scss";
 import Cart from "./components/Cart";
 import Default from "./components/Default";
 import Details from "./components/Details";
