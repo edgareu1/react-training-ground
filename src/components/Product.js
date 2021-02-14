@@ -7,7 +7,7 @@ export default class Product extends Component {
     return (
       <div className="product-card">
         <h3>{title}</h3>
-        <img src={"./" + img} alt={title} />
+        <img src={"./images/phone-ecommerce/" + img} alt={title} />
       </div>
     );
   }
