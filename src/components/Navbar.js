@@ -5,9 +5,9 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav>
-        <Link to="/" class="home-link">
+        <Link to="/" className="home-link">
           <span>
-            <i class="fas fa-mobile-alt"></i>
+            <i className="fas fa-mobile-alt"></i>
           </span>
         </Link>
 
@@ -17,7 +17,7 @@ export default class Navbar extends Component {
 
         <Link to="/cart">
           <span>
-            <i class="fas fa-cart-plus" style={{paddingRight: "10px"}}></i>
+            <i className="fas fa-cart-plus" style={{paddingRight: "10px"}}></i>
             Cart
           </span>
         </Link>
