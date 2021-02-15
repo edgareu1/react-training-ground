@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import { storeProducts, detailProduct } from "./data";
+import { storeProducts } from "./data";
 
 const ProductContext = React.createContext();
 
 class ProductProvider extends Component {
   state = {
     products: [],
-    detailProduct: detailProduct,
     cart: [],
     modalOpen: false,
-    modalProduct: detailProduct,
     cartSubTotal: 0,
     cartTax: 0,
     cartTotal: 0,
@@ -31,9 +29,30 @@ class ProductProvider extends Component {
     });
   };
 
+  addToCart = id => {
+    const tempProducts = [...this.state.products];
+    const product = tempProducts[id - 1];
+
+    product.inCart = true;
+    product.count = 1;
+    product.total = product.price;
+
+    this.setState(() => {
+      return {
+        products: [...tempProducts],
+        cart: [...this.state.cart, product]
+      }
+    });
+  };
+
   render() {
     return (
-      <ProductContext.Provider value={{ ...this.state }}>
+      <ProductContext.Provider
+        value={{
+          ...this.state,
+          addToCart: this.addToCart
+        }}
+      >
         {this.props.children}
       </ProductContext.Provider>
     );
