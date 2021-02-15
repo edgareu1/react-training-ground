@@ -6,6 +6,7 @@ export default class Details extends Component {
     return (
       <ProductConsumer>
         {value => {
+          const paramId = parseInt(this.props.match.params.id);
           const {
             id,
             company,
@@ -14,7 +15,7 @@ export default class Details extends Component {
             price,
             title,
             inCart
-          } = value.detailProduct;
+          } = value.products[paramId - 1];
 
           return (
             <div>

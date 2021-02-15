@@ -9,7 +9,7 @@ export default class Product extends Component {
       <div className="product-card">
         <h3>{title}</h3>
 
-        <Link to="/details">
+        <Link to={"/" + id}>
           <img src={"./images/phone-ecommerce/" + img} alt={title} />
         </Link>
       </div>
