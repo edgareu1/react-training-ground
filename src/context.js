@@ -29,9 +29,30 @@ class ProductProvider extends Component {
     });
   };
 
+  addToCart = id => {
+    const tempProducts = [...this.state.products];
+    const product = tempProducts[id - 1];
+
+    product.inCart = true;
+    product.count = 1;
+    product.total = product.price;
+
+    this.setState(() => {
+      return {
+        products: [...tempProducts],
+        cart: [...this.state.cart, product]
+      }
+    });
+  };
+
   render() {
     return (
-      <ProductContext.Provider value={{ ...this.state }}>
+      <ProductContext.Provider
+        value={{
+          ...this.state,
+          addToCart: this.addToCart
+        }}
+      >
         {this.props.children}
       </ProductContext.Provider>
     );
