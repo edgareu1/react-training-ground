@@ -94,15 +94,3 @@ export const storeProducts = [
     total: 0,
   },
 ];
-
-export const detailProduct = {
-  id: 1,
-  title: "Google Pixel - Black",
-  img: "product-1.png",
-  price: 10,
-  company: "google",
-  info: standardInfo,
-  inCart: false,
-  count: 0,
-  total: 0,
-};

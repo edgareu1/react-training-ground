@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Product extends Component {
   render() {
@@ -7,7 +8,10 @@ export default class Product extends Component {
     return (
       <div className="product-card">
         <h3>{title}</h3>
-        <img src={"./images/phone-ecommerce/" + img} alt={title} />
+
+        <Link to={"/" + id}>
+          <img src={"./images/phone-ecommerce/" + img} alt={title} />
+        </Link>
       </div>
     );
   }
