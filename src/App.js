@@ -14,8 +14,8 @@ function App(props) {
 
       <Switch>
         <Route exact path="/" component={ProductList} />
-        <Route path="/:id" component={Details} />
         <Route path="/cart" component={Cart} />
+        <Route path="/:id" component={Details} />
         <Route component={Default} />
       </Switch>
     </React.Fragment>
