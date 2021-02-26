@@ -45,12 +45,42 @@ class ProductProvider extends Component {
     });
   };
 
+  increment = id => {
+    const tempCart = [...this.state.cart];
+    const selectedProduct = tempCart.find(item => item.id === id);
+    const index = tempCart.indexOf(selectedProduct);
+    const product = tempCart[index];
+
+    product.count = product.count + 1;
+    product.total = product.count * product.price;
+
+    this.setState(() => {
+      return { cart: [...tempCart] };
+    });
+  };
+
+  decrement = id => {
+    let tempCart = [...this.state.cart];
+    const selectedProduct = tempCart.find(item => item.id === id);
+    const index = tempCart.indexOf(selectedProduct);
+    const product = tempCart[index];
+
+    product.count = product.count - 1;
+    product.total = product.count * product.price;
+
+    this.setState(() => {
+      return { cart: [...tempCart] };
+    });
+  };
+
   render() {
     return (
       <ProductContext.Provider
         value={{
           ...this.state,
-          addToCart: this.addToCart
+          addToCart: this.addToCart,
+          increment: this.increment,
+          decrement: this.decrement
         }}
       >
         {this.props.children}
