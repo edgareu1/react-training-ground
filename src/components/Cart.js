@@ -8,13 +8,32 @@ export default class Cart extends Component {
       <div>
         <h1>Cart</h1>
 
-        <ProductConsumer>
-          {value => {
-            return value.cart.map(product => {
-              return <CartItem key={product.id} item={product} />;
-            });
+        <table
+          style={{
+            width: "100%",
+            "-webkit-border-vertical-spacing": "25px"
           }}
-        </ProductConsumer>
+        >
+          <thead>
+            <tr>
+              <th colSpan="2">Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Remove</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <ProductConsumer>
+              {value => {
+                return value.cart.map(product => {
+                  return <CartItem key={product.id} item={product} />;
+                });
+              }}
+            </ProductConsumer>
+          </tbody>
+        </table>
       </div>
     );
   }

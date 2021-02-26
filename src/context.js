@@ -15,7 +15,7 @@ class ProductProvider extends Component {
 
   componentDidMount() {
     this.setProducts();
-  }
+  };
 
   setProducts = () => {
     let products = [];
@@ -29,9 +29,13 @@ class ProductProvider extends Component {
     });
   };
 
+  getItem = id => {
+    return this.state.products.find(item => item.id === id);
+  }
+
   addToCart = id => {
-    const tempProducts = [...this.state.products];
-    const product = tempProducts[id - 1];
+    const tempProducts = [...this.state.products],
+      product = tempProducts[id - 1];
 
     product.inCart = true;
     product.count = 1;
@@ -45,12 +49,58 @@ class ProductProvider extends Component {
     });
   };
 
+  increment = id => {
+    const tempCart = [...this.state.cart],
+      product = this.getItem(id);
+
+    product.count = product.count + 1;
+    product.total = product.count * product.price;
+
+    this.setState(() => {
+      return { cart: [...tempCart] };
+    });
+  };
+
+  decrement = id => {
+    const tempCart = [...this.state.cart],
+      product = this.getItem(id);
+
+    product.count = product.count - 1;
+    product.total = product.count * product.price;
+
+    this.setState(() => {
+      return { cart: [...tempCart] };
+    });
+  };
+
+  remove = id => {
+    let tempCart = [...this.state.cart];
+    const tempProducts = [...this.state.products],
+      removedProduct = this.getItem(id);
+
+    removedProduct.inCart = false;
+    removedProduct.count = 0;
+    removedProduct.total = 0;
+
+    tempCart = tempCart.filter(item => item.id !== id);
+
+    this.setState(() => {
+      return {
+        cart: [...tempCart],
+        products: [...tempProducts]
+      };
+    });
+  };
+
   render() {
     return (
       <ProductContext.Provider
         value={{
           ...this.state,
-          addToCart: this.addToCart
+          addToCart: this.addToCart,
+          increment: this.increment,
+          decrement: this.decrement,
+          remove: this.remove
         }}
       >
         {this.props.children}
