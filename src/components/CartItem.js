@@ -11,27 +11,30 @@ export default class CartItem extends Component {
           const { increment, decrement, remove } = value;
 
           return (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                width: "100%",
-                marginTop: "50px"
-              }}
-            >
-              <img
-                src={"./images/phone-ecommerce/" + img}
-                alt={title}
-                style={{width: "80px", height: "80px"}}
-              />
-              <p>{title}</p>
-              <p>{price}</p>
-              <button onClick={() => { decrement(id) }}>-</button>
-              <p>{count}</p>
-              <button onClick={() => { increment(id) }}>+</button>
-              <button onClick={() => { remove(id) }}>Remove</button>
-              <p>{total}</p>
-            </div>
+            <tr>
+              <td>
+                <img
+                  src={"./images/phone-ecommerce/" + img}
+                  alt={title}
+                  style={{width: "80px", height: "80px"}}
+                />
+              </td>
+
+              <td><p>{title}</p></td>
+              <td><p>{price}</p></td>
+
+              <td style={{display: "flex", justifyContent: "space-around"}}>
+                <button onClick={() => { decrement(id) }}>-</button>
+                <p>{count}</p>
+                <button onClick={() => { increment(id) }}>+</button>
+              </td>
+
+              <td>
+                <button onClick={() => { remove(id) }}>Remove</button>
+              </td>
+
+              <td><p>{total}</p></td>
+            </tr>
           )
         }}
       </ProductConsumer>
