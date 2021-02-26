@@ -15,7 +15,7 @@ class ProductProvider extends Component {
 
   componentDidMount() {
     this.setProducts();
-  }
+  };
 
   setProducts = () => {
     let products = [];
@@ -29,9 +29,13 @@ class ProductProvider extends Component {
     });
   };
 
+  getItem = id => {
+    return this.state.products.find(item => item.id === id);
+  }
+
   addToCart = id => {
-    const tempProducts = [...this.state.products];
-    const product = tempProducts[id - 1];
+    const tempProducts = [...this.state.products],
+      product = tempProducts[id - 1];
 
     product.inCart = true;
     product.count = 1;
@@ -46,10 +50,8 @@ class ProductProvider extends Component {
   };
 
   increment = id => {
-    const tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(item => item.id === id);
-    const index = tempCart.indexOf(selectedProduct);
-    const product = tempCart[index];
+    const tempCart = [...this.state.cart],
+      product = this.getItem(id);
 
     product.count = product.count + 1;
     product.total = product.count * product.price;
@@ -60,10 +62,8 @@ class ProductProvider extends Component {
   };
 
   decrement = id => {
-    let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(item => item.id === id);
-    const index = tempCart.indexOf(selectedProduct);
-    const product = tempCart[index];
+    const tempCart = [...this.state.cart],
+      product = this.getItem(id);
 
     product.count = product.count - 1;
     product.total = product.count * product.price;
