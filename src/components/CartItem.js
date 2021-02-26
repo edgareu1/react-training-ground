@@ -8,7 +8,7 @@ export default class CartItem extends Component {
     return (
       <ProductConsumer>
         {value => {
-          const { increment, decrement } = value;
+          const { increment, decrement, remove } = value;
 
           return (
             <div
@@ -29,6 +29,7 @@ export default class CartItem extends Component {
               <button onClick={() => { decrement(id) }}>-</button>
               <p>{count}</p>
               <button onClick={() => { increment(id) }}>+</button>
+              <button onClick={() => { remove(id) }}>Remove</button>
               <p>{total}</p>
             </div>
           )

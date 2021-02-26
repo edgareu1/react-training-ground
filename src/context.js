@@ -73,6 +73,25 @@ class ProductProvider extends Component {
     });
   };
 
+  remove = id => {
+    let tempCart = [...this.state.cart];
+    const tempProducts = [...this.state.products],
+      removedProduct = this.getItem(id);
+
+    removedProduct.inCart = false;
+    removedProduct.count = 0;
+    removedProduct.total = 0;
+
+    tempCart = tempCart.filter(item => item.id !== id);
+
+    this.setState(() => {
+      return {
+        cart: [...tempCart],
+        products: [...tempProducts]
+      };
+    });
+  };
+
   render() {
     return (
       <ProductContext.Provider
@@ -80,7 +99,8 @@ class ProductProvider extends Component {
           ...this.state,
           addToCart: this.addToCart,
           increment: this.increment,
-          decrement: this.decrement
+          decrement: this.decrement,
+          remove: this.remove
         }}
       >
         {this.props.children}
