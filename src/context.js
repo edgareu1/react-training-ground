@@ -111,6 +111,25 @@ class ProductProvider extends Component {
     });
   };
 
+  checkoutCart = () => {
+    this.clearCart();
+
+    const checkoutBtn = document.getElementById("btn-checkout"),
+      checkoutMessage = document.createElement("p"),
+      prevCheckoutMessage = document.getElementById("checkout-message");
+
+    checkoutMessage.id = "checkout-message";
+    if (prevCheckoutMessage) prevCheckoutMessage.remove();
+
+    if (this.state.cart.length === 0) {
+      checkoutMessage.innerText = "Nothing to purchase!";
+    } else {
+      checkoutMessage.innerText = "Your purchase was successful!";
+    }
+
+    checkoutBtn.parentElement.appendChild(checkoutMessage);
+  };
+
   setTotals = () => {
     const taxRate = 0.2,
       newCartSubtotal = this.state.cart.reduce((accumulator, currentValue) => {
@@ -135,7 +154,8 @@ class ProductProvider extends Component {
           increment: this.increment,
           decrement: this.decrement,
           remove: this.remove,
-          clearCart: this.clearCart
+          clearCart: this.clearCart,
+          checkoutCart: this.checkoutCart
         }}
       >
         {this.props.children}

@@ -27,7 +27,9 @@ export default class CartTotal extends Component {
                 <strong>{Number(cartTotal).toFixed(2)} €</strong>
               </h5>
 
-              <button id="btn-checkout">Checkout</button>
+              <button id="btn-checkout" onClick={value.checkoutCart}>
+                Checkout
+              </button>
             </div>
           );
         }}
