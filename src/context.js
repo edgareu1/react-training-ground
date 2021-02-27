@@ -20,7 +20,13 @@ class ProductProvider extends Component {
     let products = [];
 
     storeProducts.forEach((item) => {
-      products = [...products, item];
+      const singleItem = {
+        ...item,
+        inCart: false,
+        count: 0,
+        total: 0
+      };
+      products = [...products, singleItem];
     });
 
     this.setState(() => {
@@ -96,10 +102,19 @@ class ProductProvider extends Component {
     }, this.setTotals);
   };
 
+  clearCart = () => {
+    this.setState(() => {
+      return { cart: [] };
+    }, () => {
+      this.setProducts();
+      this.setTotals();
+    });
+  };
+
   setTotals = () => {
     const taxRate = 0.2,
       newCartSubtotal = this.state.cart.reduce((accumulator, currentValue) => {
-        return accumulator + (currentValue.price * currentValue.count);
+        return accumulator + currentValue.total;
       }, 0);
 
     this.setState(() => {
@@ -119,7 +134,8 @@ class ProductProvider extends Component {
           addToCart: this.addToCart,
           increment: this.increment,
           decrement: this.decrement,
-          remove: this.remove
+          remove: this.remove,
+          clearCart: this.clearCart
         }}
       >
         {this.props.children}

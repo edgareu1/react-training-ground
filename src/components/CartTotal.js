@@ -10,6 +10,10 @@ export default class CartTotal extends Component {
 
           return (
             <div style={{textAlign: "right", paddingRight: "20px"}}>
+              <button id="btn-clear-cart" onClick={value.clearCart}>
+                Clear Cart
+              </button>
+
               <h5>
                 <span>Subtotal: </span>
                 <strong>{Number(cartSubTotal).toFixed(2)} €</strong>
@@ -23,7 +27,7 @@ export default class CartTotal extends Component {
                 <strong>{Number(cartTotal).toFixed(2)} €</strong>
               </h5>
 
-              <button id="checkout">Checkout</button>
+              <button id="btn-checkout">Checkout</button>
             </div>
           );
         }}
