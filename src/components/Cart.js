@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ProductConsumer } from "../context";
 import CartItem from "./CartItem";
+import CartTotal from "./CartTotal";
 
 export default class Cart extends Component {
   render() {
@@ -11,7 +12,7 @@ export default class Cart extends Component {
         <table
           style={{
             width: "100%",
-            "-webkit-border-vertical-spacing": "25px"
+            WebkitBorderVerticalSpacing: "25px"
           }}
         >
           <thead>
@@ -34,6 +35,8 @@ export default class Cart extends Component {
             </ProductConsumer>
           </tbody>
         </table>
+
+        <CartTotal />
       </div>
     );
   }

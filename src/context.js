@@ -7,7 +7,6 @@ class ProductProvider extends Component {
   state = {
     products: [],
     cart: [],
-    modalOpen: false,
     cartSubTotal: 0,
     cartTax: 0,
     cartTotal: 0,
@@ -21,7 +20,13 @@ class ProductProvider extends Component {
     let products = [];
 
     storeProducts.forEach((item) => {
-      products = [...products, item];
+      const singleItem = {
+        ...item,
+        inCart: false,
+        count: 0,
+        total: 0
+      };
+      products = [...products, singleItem];
     });
 
     this.setState(() => {
@@ -31,7 +36,7 @@ class ProductProvider extends Component {
 
   getItem = id => {
     return this.state.products.find(item => item.id === id);
-  }
+  };
 
   addToCart = id => {
     const tempProducts = [...this.state.products],
@@ -46,7 +51,7 @@ class ProductProvider extends Component {
         products: [...tempProducts],
         cart: [...this.state.cart, product]
       }
-    });
+    }, this.setTotals);
   };
 
   increment = id => {
@@ -58,7 +63,7 @@ class ProductProvider extends Component {
 
     this.setState(() => {
       return { cart: [...tempCart] };
-    });
+    }, this.setTotals);
   };
 
   decrement = id => {
@@ -66,11 +71,16 @@ class ProductProvider extends Component {
       product = this.getItem(id);
 
     product.count = product.count - 1;
-    product.total = product.count * product.price;
 
-    this.setState(() => {
-      return { cart: [...tempCart] };
-    });
+    if (product.count === 0) {
+      this.remove(id);
+    } else {
+      product.total = product.count * product.price;
+
+      this.setState(() => {
+        return { cart: [...tempCart] };
+      }, this.setTotals);
+    }
   };
 
   remove = id => {
@@ -89,6 +99,49 @@ class ProductProvider extends Component {
         cart: [...tempCart],
         products: [...tempProducts]
       };
+    }, this.setTotals);
+  };
+
+  clearCart = () => {
+    this.setState(() => {
+      return { cart: [] };
+    }, () => {
+      this.setProducts();
+      this.setTotals();
+    });
+  };
+
+  checkoutCart = () => {
+    this.clearCart();
+
+    const checkoutBtn = document.getElementById("btn-checkout"),
+      checkoutMessage = document.createElement("p"),
+      prevCheckoutMessage = document.getElementById("checkout-message");
+
+    checkoutMessage.id = "checkout-message";
+    if (prevCheckoutMessage) prevCheckoutMessage.remove();
+
+    if (this.state.cart.length === 0) {
+      checkoutMessage.innerText = "Nothing to purchase!";
+    } else {
+      checkoutMessage.innerText = "Your purchase was successful!";
+    }
+
+    checkoutBtn.parentElement.appendChild(checkoutMessage);
+  };
+
+  setTotals = () => {
+    const taxRate = 0.2,
+      newCartSubtotal = this.state.cart.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.total;
+      }, 0);
+
+    this.setState(() => {
+      return {
+        cartSubTotal: newCartSubtotal,
+        cartTax: newCartSubtotal * taxRate,
+        cartTotal: newCartSubtotal * (1 + taxRate)
+      };
     });
   };
 
@@ -100,7 +153,9 @@ class ProductProvider extends Component {
           addToCart: this.addToCart,
           increment: this.increment,
           decrement: this.decrement,
-          remove: this.remove
+          remove: this.remove,
+          clearCart: this.clearCart,
+          checkoutCart: this.checkoutCart
         }}
       >
         {this.props.children}
