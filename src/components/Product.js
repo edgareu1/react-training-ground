@@ -11,23 +11,31 @@ export default class Product extends Component {
         {value => {
           return (
             <div className="product-card">
-              <h3>{title}</h3>
+              <div className="product-card pos-rel">
+                <h3 className="prod-text pos-abs pos-top pos-left">
+                  {title}
+                </h3>
 
-              <Link to={"/" + id}>
-                <img src={"./images/phone-ecommerce/" + img} alt={title} />
-              </Link>
+                <Link to={"/" + id} className="cart-img">
+                  <img src={"./images/phone-ecommerce/" + img} alt={title} />
+                </Link>
 
-              <button
-                className="cart-btn"
-                disabled={inCart ? true : false}
-                onClick={() => { value.addToCart(id) }}
-              >
-                {inCart ? (
-                  <p>in cart</p>
-                ) : (
-                  <i className="fas fa-cart-plus" />
-                )}
-              </button>
+                <p className="prod-text pos-abs pos-bot pos-left">
+                  {Number(price).toFixed(2)} €
+                </p>
+
+                <button
+                  className="prod-text cart-btn pos-abs pos-bot pos-right"
+                  disabled={inCart ? true : false}
+                  onClick={() => { value.addToCart(id) }}
+                >
+                  {inCart ? (
+                    <p>in cart</p>
+                  ) : (
+                    <i className="fas fa-cart-plus" />
+                  )}
+                </button>
+              </div>
             </div>
           );
         }}
