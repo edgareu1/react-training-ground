@@ -5,16 +5,18 @@ import { ProductConsumer } from "../context";
 export default class ProductList extends Component {
   render() {
     return (
-      <div>
+      <div className="page-content">
         <h1>Our products</h1>
 
-        <ProductConsumer>
-          {value => {
-            return value.products.map(product => {
-              return <Product key={product.id} product={product} />;
-            });
-          }}
-        </ProductConsumer>
+        <div className="products-list">
+          <ProductConsumer>
+            {value => {
+              return value.products.map(product => {
+                return <Product key={product.id} product={product} />;
+              });
+            }}
+          </ProductConsumer>
+        </div>
       </div>
     );
   }
