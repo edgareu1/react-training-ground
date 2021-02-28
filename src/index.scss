@@ -1,7 +1,11 @@
 body {
+  color: rgba(0, 0, 60, 1);
   background: rgba(245, 245, 245, 1);
   min-height: 100vh;
   width: 100%;
+}
+
+* {
   padding: 0;
   margin: 0;
 }
@@ -9,22 +13,29 @@ body {
 nav {
   display: flex;
   justify-content: space-between;
+  font-size: 25px;
   background-color: rgba(60, 70, 180, 1);
   height: 50px;
   width: 100%;
   padding: 0 20px;
   box-sizing: border-box;
 
+  ul {
+    display: flex;
+    list-style: none;
+
+    a:first-child {
+      margin-right: 50px;
+    }
+  }
+
   ul,
   a {
-    padding: 0;
-    margin: 0;
     align-self: center;
   }
 
   a {
     color: rgba(230, 240, 255, 1);
-    font-size: 22px;
     text-decoration: none;
 
     &:hover {
@@ -32,7 +43,7 @@ nav {
     }
   }
 
-  span {
-    font-size: 25px;
+  .fa-cart-plus {
+    padding-right: 10px;
   }
 }
