@@ -12,15 +12,19 @@ export default class Navbar extends Component {
         </Link>
 
         <ul>
-          <Link to="/">Products</Link>
-        </ul>
+          <Link to="/">
+            <li>Products</li>
+          </Link>
 
-        <Link to="/cart">
-          <span>
-            <i className="fas fa-cart-plus" style={{paddingRight: "10px"}}></i>
-            Cart
-          </span>
-        </Link>
+          <Link to="/cart">
+            <li>
+              <span>
+                <i className="fas fa-cart-plus"></i>
+                Cart
+              </span>
+            </li>
+          </Link>
+        </ul>
       </nav>
     );
   }
