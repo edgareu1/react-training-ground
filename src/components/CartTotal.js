@@ -11,7 +11,7 @@ export default class CartTotal extends Component {
           return (
             <div className="cart-total">
               <button
-                class="cart-total-btn"
+                className="cart-total-btn"
                 id="btn-clear-cart"
                 onClick={value.clearCart}
               >
@@ -32,7 +32,7 @@ export default class CartTotal extends Component {
               </h5>
 
               <button
-                class="cart-total-btn"
+                className="cart-total-btn"
                 id="btn-checkout"
                 onClick={value.checkoutCart}
               >
