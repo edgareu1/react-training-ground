@@ -20,20 +20,26 @@ export default class CartItem extends Component {
                 />
               </td>
 
-              <td><p>{title}</p></td>
-              <td><p>{price}</p></td>
+              <td><p>{title.toUpperCase()}</p></td>
+              <td><p>{Number(price).toFixed(2)} €</p></td>
 
-              <td style={{display: "flex", justifyContent: "space-around"}}>
-                <button onClick={() => { decrement(id) }}>-</button>
-                <p>{count}</p>
-                <button onClick={() => { increment(id) }}>+</button>
+              <td>
+                <div className="field-button">
+                  <button onClick={() => { decrement(id) }}>-</button>
+                  <p>{count}</p>
+                  <button onClick={() => { increment(id) }}>+</button>
+                </div>
               </td>
 
               <td>
-                <button onClick={() => { remove(id) }}>Remove</button>
+                <div className="field-button">
+                  <button onClick={() => { remove(id) }}>
+                    <i className="fas fa-trash-alt"></i>
+                  </button>
+                </div>
               </td>
 
-              <td><p>{total}</p></td>
+              <td><p>{Number(total).toFixed(2)} €</p></td>
             </tr>
           )
         }}
