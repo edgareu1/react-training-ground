@@ -16,7 +16,7 @@ export default class Product extends Component {
                   {title.toUpperCase()}
                 </h3>
 
-                <Link to={"/" + id} className="cart-img">
+                <Link to={"/product/" + id} className="cart-img">
                   <img src={"./images/phone-ecommerce/" + img} alt={title} />
                 </Link>
 
