@@ -9,28 +9,32 @@ export default class Cart extends Component {
       <div className="page-content">
         <h1>Cart</h1>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Model</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Remove</th>
-              <th>Total</th>
-            </tr>
-          </thead>
+        <ProductConsumer>
+          {value => {
+            return value.cart.length === 0 ? (
+                <h2>Cart is empty!</h2>
+              ) : (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Model</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Remove</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
 
-          <tbody>
-            <ProductConsumer>
-              {value => {
-                return value.cart.map(product => {
-                  return <CartItem key={product.id} item={product} />;
-                });
-              }}
-            </ProductConsumer>
-          </tbody>
-        </table>
+                  <tbody>
+                      {value.cart.map(product => {
+                          return <CartItem key={product.id} item={product} />;
+                      })}
+                  </tbody>
+                </table>
+              );
+            }}
+        </ProductConsumer>
 
         <CartTotal />
       </div>

@@ -23,7 +23,7 @@ export default class Details extends Component {
 
               <div className="single-product">
                 <img
-                  src={"./images/phone-ecommerce/" + img}
+                  src={"../images/phone-ecommerce/" + img}
                   alt={title}
                   className="float-el"
                 />
