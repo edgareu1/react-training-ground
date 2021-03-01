@@ -6,18 +6,14 @@ import CartTotal from "./CartTotal";
 export default class Cart extends Component {
   render() {
     return (
-      <div>
+      <div className="page-content">
         <h1>Cart</h1>
 
-        <table
-          style={{
-            width: "100%",
-            WebkitBorderVerticalSpacing: "25px"
-          }}
-        >
+        <table>
           <thead>
             <tr>
-              <th colSpan="2">Product</th>
+              <th>Product</th>
+              <th>Model</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Remove</th>

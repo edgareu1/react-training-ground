@@ -9,8 +9,12 @@ export default class CartTotal extends Component {
           const { cartSubTotal, cartTax, cartTotal } = value;
 
           return (
-            <div style={{textAlign: "right", paddingRight: "20px"}}>
-              <button id="btn-clear-cart" onClick={value.clearCart}>
+            <div className="cart-total">
+              <button
+                class="cart-total-btn"
+                id="btn-clear-cart"
+                onClick={value.clearCart}
+              >
                 Clear Cart
               </button>
 
@@ -27,7 +31,11 @@ export default class CartTotal extends Component {
                 <strong>{Number(cartTotal).toFixed(2)} €</strong>
               </h5>
 
-              <button id="btn-checkout" onClick={value.checkoutCart}>
+              <button
+                class="cart-total-btn"
+                id="btn-checkout"
+                onClick={value.checkoutCart}
+              >
                 Checkout
               </button>
             </div>
