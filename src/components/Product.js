@@ -13,7 +13,7 @@ export default class Product extends Component {
             <div className="product-card">
               <div className="product-card pos-rel">
                 <h3 className="prod-text pos-abs pos-top pos-left">
-                  {title}
+                  {title.toUpperCase()}
                 </h3>
 
                 <Link to={"/" + id} className="cart-img">
