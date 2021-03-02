@@ -1,0 +1,33 @@
+.single-product {
+  width: fit-content;
+  margin: 0 auto;
+
+  .float-el {
+    float: left;
+    width: 400px;
+  }
+
+  .product-details {
+    padding: 30px 20px;
+
+    h4 {
+      margin-bottom: 16px;
+      font-size: 22px;
+    }
+
+    h6 {
+      margin-bottom: 12px;
+      font-size: 16px;
+
+      &:last-of-type {
+        margin-bottom: 5px;
+      }
+    }
+
+    p {
+      text-align: justify;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+  }
+}
