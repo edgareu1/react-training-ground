@@ -1,3 +1,9 @@
+@mixin btn-color-scheme($color) {
+  color: rgba($color, 1);
+  background: rgba($color, 0.15);
+  border: 1px solid rgba($color, 1);
+}
+
 table {
   width: 100%;
   border-spacing: 25px;
@@ -23,11 +29,9 @@ table {
 
     button,
     p {
-      color: rgba(0, 0, 60, 1);
+      @include btn-color-scheme(rgb(0, 0, 60));
       font-size: 16px;
-      background: rgba(0, 0, 60, 0.1);
       padding: 6px 10px;
-      border: 1px solid rgba(0, 0, 60, 1);
       border-radius: 3px;
     }
   }
@@ -52,16 +56,12 @@ table {
   }
 
   #btn-clear-cart {
-    color: rgba(150, 0, 0, 1);
-    background: rgba(150, 0, 0, 0.15);
-    border: 1px solid rgba(150, 0, 0, 1);
+    @include btn-color-scheme(rgb(150, 0, 0));
     margin-bottom: 4px;
   }
 
   #btn-checkout {
-    color: rgba(120, 120, 0, 1);
-    background: rgba(255, 255, 0, 0.15);
-    border: 1px solid rgb(120, 120, 0);
+    @include btn-color-scheme(rgb(140, 140, 0));
     margin-top: 12px;
   }
 
