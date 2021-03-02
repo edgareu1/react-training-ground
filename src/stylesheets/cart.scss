@@ -1,0 +1,72 @@
+table {
+  width: 100%;
+  border-spacing: 25px;
+  font-weight: bold;
+
+  th,
+  td {
+    width: 16.6%;
+    text-align: center;
+  }
+
+  th {
+    font-size: 18px;
+  }
+
+  td {
+    font-size: 16px;
+  }
+
+  .field-button {
+    display: flex;
+    justify-content: space-around;
+
+    button,
+    p {
+      color: rgba(0, 0, 60, 1);
+      font-size: 16px;
+      background: rgba(0, 0, 60, 0.1);
+      padding: 6px 10px;
+      border: 1px solid rgba(0, 0, 60, 1);
+      border-radius: 3px;
+    }
+  }
+}
+
+.cart-total {
+  text-align: right;
+  padding-right: 20px;
+
+  h5 {
+    font-size: 17px;
+    font-weight: bold;
+    padding-right: 5px;
+    margin-top: 8px;
+  }
+
+  .cart-total-btn {
+    padding: 8px 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+  #btn-clear-cart {
+    color: rgba(150, 0, 0, 1);
+    background: rgba(150, 0, 0, 0.15);
+    border: 1px solid rgba(150, 0, 0, 1);
+    margin-bottom: 4px;
+  }
+
+  #btn-checkout {
+    color: rgba(120, 120, 0, 1);
+    background: rgba(255, 255, 0, 0.15);
+    border: 1px solid rgb(120, 120, 0);
+    margin-top: 12px;
+  }
+
+  #checkout-message {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}
